@@ -1,0 +1,10 @@
+<%= form_with model: @genre, url: admin_genre_path do |f| %>
+<div class= "form-group">
+ <h4>ジャンル編集</h4>
+ <p>ジャンル名</p>
+  <%= f.text_field :name, class:"form-control" %>
+</div>
+
+<%= f.submit '変更を保存', class:"btn btn-success" %>
+
+<% end %>

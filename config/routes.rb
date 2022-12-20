@@ -22,7 +22,8 @@ Rails.application.routes.draw do
    post 'orders/comfirm' => 'orders#comfirm'
    get 'orders/complete' => 'orders#complete'
    root to: 'homes#top'
-  get 'home/about' => 'homes#about'
+   get 'home/about' => 'homes#about'
+   get 'customers/my_page' =>'customers#show'
  end
  
 devise_for :customers,skip: [:passwords], controllers: {
