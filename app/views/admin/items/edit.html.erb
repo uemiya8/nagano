@@ -1,0 +1,30 @@
+<h4>商品編集</h4>
+<table>
+  <thead>
+    <tr>
+      <th>商品画像</th>
+      <th>商品名</th>
+      <th>ジャンル</th>
+      <th>税抜価格</th>
+      <th>販売ステータス</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <tr>
+      <td><%= f.file_field :image, accept: "image/*" %></td>
+      <td><%= f.text_field :name %></td>
+      <td><%= f.text_area :introduction %></td>
+      <td><%= f.select :genre_id %></td>
+      <td><%= f.text_field :price %></td>
+      <td><%= f.radio_button :is_active, :sale %>
+          <%= f.label :is_active_true, "販売中" %>
+
+          <%= f.radio_button :is_active, :stop %>
+          <%= f.label :is_active_false, "販売停止" %></td>
+          
+      <td><%= f.submit '変更を保存' %></td>
+    </tr>
+  </tbody>
+  
+</table>
