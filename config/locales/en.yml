@@ -31,3 +31,9 @@
 
 en:
   hello: "Hello world"
+  enums:
+    item:
+      is_active:
+        sale: 販売中
+        stop: 停止中
+  

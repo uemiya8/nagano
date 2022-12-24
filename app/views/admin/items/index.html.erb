@@ -1,27 +1,27 @@
 <h4>商品一覧</h4>
 <%= link_to "+", new_admin_item_path %>
 <table class="table table-hover table-invrse">
- <thead>
-  <tr>
-   <th>商品id</th>
-   <th>商品名</th>
-   <th>税抜価格</th>
-   <th>ジャンル</th>
-   <th>ステータス</th>
-  </tr>
- </thead>
- 
-<tbody>
-<% @items.each do |item| %>
- <tr>
-  <td>
-   <%= item.id %>
-  </td>
-  <td><%= link_to item.name, admin_item_path(item.id) %>
-  </td>
-  </tr>
-  <% end %>   
-</tbody>
+  <thead>
+    <tr>
+      <th>商品id</th>
+      <th>商品名</th>
+      <th>税抜価格</th>
+      <th>ジャンル</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.id %></td>
+        <td><%= link_to item.name, admin_item_path(item.id) %></td>
+        <td><%= item.price %></td>
+        <td><%= item.genre&.name %></td>
+        <td class="<%=  item.is_active == 'sale' ? 'active_item' : 'stop_item' %>"><%= item.is_active_i18n %></td>
+      </tr>
+    <% end %>   
+  </tbody>
 </table>
 
 
