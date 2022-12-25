@@ -1,5 +1,5 @@
 <h4>の会員詳細</h4>
-<%= customer.id %>
+<%= @customer.id %>
 
 <table>
   <tr>
@@ -8,23 +8,23 @@
   </tr>
   <tr>
     <th>氏名</th>
-    <td><%= @customer.name %></td>
+    <td><%#= @customer.name %></td>
   </tr>
   <tr>
     <th>フリガナ</th>
-    <td><%= @customer.name.kana %></td>
+    <td><%#= @customer.name.kana %></td>
   </tr>
   <tr>
     <th>郵便番号</th>
-    <td><%= @customer.postal.code %></td>
+    <td><%#= @customer.postal.code %></td>
   </tr>
   <tr>
     <th>住所</th>
-    <td><%= @customer.address %></td>
+    <td><%#= @customer.address %></td>
   </tr>
   <tr>
     <th>電話番号</th>
-    <td><%= @customer.telephone.number %></td>
+    <td><%#= @customer.telephone.number %></td>
   </tr>
   <tr>
     <th>メールアドレス</th>
@@ -32,6 +32,10 @@
   </tr>
   <tr>
     <th>会員ステータス</th>
-    <td></td>
+    <td><% if @customer.is_deleted==false %>
+        有効
+        <% else %>
+        無効
+        <% end %></td>
   </tr>
 </table>
