@@ -1,10 +1,11 @@
 <h4>商品編集</h4>
-<%= form_with model: @item, url:edit_admin_item_path do |f| %>
+<%= form_with model: @item, url:admin_item_path(@item.id) do |f| %>
 <table>
   <thead>
     <tr>
       <th>商品画像</th>
       <th>商品名</th>
+      <th>商品説明</th>
       <th>ジャンル</th>
       <th>税抜価格</th>
       <th>販売ステータス</th>
@@ -16,7 +17,7 @@
       <td><%= f.file_field :image, accept: "image/*" %></td>
       <td><%= f.text_field :name %></td>
       <td><%= f.text_area :introduction %></td>
-      <td><%= f.select :genre_id %></td>
+      <td><%= f.collection_select :genre_id,Genre.all,:id,:name %></td>
       <td><%= f.text_field :price %></td>
       <td><%= f.radio_button :is_active, :sale %>
           <%= f.label :is_active_true, "販売中" %>

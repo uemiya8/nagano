@@ -1,9 +1,38 @@
 <h4>さんの会員情報編集</h4>
 
-<%= form_with model: @customer,url: do |f| %>
-<div class="form-group"> <label>氏名</label>
- <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"氏名", class: "form-control" %>
-</div>
-<div class="form-group"> <label>フリガナ</label>
- <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"氏名", class: "form-control" %>
-</div>
+<%= form_with model: @customer,url:admin_customer_path do |f| %>
+<table>
+ <thead>
+  <tr>
+   <th>会員ID</th>
+   <th>氏名</th>
+   <th>フリガナ</th>
+   <th>郵便番号</th>
+   <th>住所</th>
+   <th>電話番語</th>
+   <th>メールアドレス</th>
+   <th>会員ステータス</th>
+  </tr>
+ </thead>
+ 
+ <tbody>
+  <tr>
+   <td></td>
+   <td><%=  f.text_field :first_name, :last_name %></td>
+   <td><%=  f.text_field :first_name_kana, :last_name_kana %></td>
+   <td><%= f.text_field :postal_code %></td>
+   <td><%= f.text_field :address %></td>
+   <td><%= f.text_field :telephone_number %></td>
+   <td><%= f.text_field :email %></td>
+   <td><%= f.radio_button :is_active, :sale %>
+          <%= f.label :is_active_true, "有効" %>
+
+          <%= f.radio_button :is_active, :stop %>
+          <%= f.label :is_active_false, "無効" %></td>
+          
+          <td><%= f.submit '変更を保存' %></td>
+  </tr>
+ </tbody>
+</table>
+
+
