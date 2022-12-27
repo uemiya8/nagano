@@ -20,6 +20,7 @@
         <td><%= item.genre&.name %></td>
         <td class="<%=  item.is_active == 'sale' ? 'active_item' : 'stop_item' %>"><%= item.is_active_i18n %></td>
       </tr>
+      
     <% end %>   
   </tbody>
 </table>

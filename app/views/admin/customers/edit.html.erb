@@ -1,6 +1,6 @@
 <h4>さんの会員情報編集</h4>
 
-<%= form_with model: @customer,url:admin_customer_path do |f| %>
+<%= form_with model: @customer,url:admin_customer_path(@customer.id) do |f| %>
 <table>
  <thead>
   <tr>
@@ -18,8 +18,8 @@
  <tbody>
   <tr>
    <td></td>
-   <td><%=  f.text_field :first_name, :last_name %></td>
-   <td><%=  f.text_field :first_name_kana, :last_name_kana %></td>
+   <td><%= f.text_field :first_name %><%= f.text_field :last_name %></td>
+   <td><%= f.text_field :first_name_kana %><%= f.text_field :last_name_kana %></td>
    <td><%= f.text_field :postal_code %></td>
    <td><%= f.text_field :address %></td>
    <td><%= f.text_field :telephone_number %></td>
@@ -34,5 +34,6 @@
   </tr>
  </tbody>
 </table>
+<% end %>
 
 
