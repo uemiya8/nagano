@@ -13,7 +13,7 @@ Rails.application.routes.draw do
  
  scope module: :public do
    resources :items, only:[:index, :show]
-   resources :customers, only:[ :edit, :update]
+   resource :customers, only:[ :edit, :update]
    resources :cart_items, only:[:index, :update, :destroy, :destroy_all, :create]
    resources :orders, only:[:new, :create, :index, :show]
    resources :addresses, only:[:index, :edit, :create, :update, :destroy]
