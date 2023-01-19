@@ -29,9 +29,19 @@ class Public::SessionsController < Devise::SessionsController
     if @customer.valid_password?(params[:customer][:password]) && @customer.is_deleted == true
         redirect_to new_customer_registration_path
     end
-  end
+    
+    def reject_inactive_user
+    @customer = Customer.find_by(name: params[:user][:name])
+    if @customer
+      if @customer.valid_password?(params[:user][:password]) && !@customer.is_valid
+        redirect_to new_customer_session_path
+      end
+    
+    end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+    end
+  end
 end
