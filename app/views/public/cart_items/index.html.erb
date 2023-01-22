@@ -9,7 +9,7 @@
       <tr>
           <td><%= cart_item.item.with_tax_price%></td>
           <td><%= (cart_item.item.price * 1.1).floor * cart_item.amount %></td>
-          <% @合計金額 +=  (cart_item.item.price * 1.1).floor * cart_item.amount %>
+          <% @total_fee +=  (cart_item.item.price * 1.1).floor * cart_item.amount %>
       </tr>
   <% end %>
   </tbody>
