@@ -1,8 +1,19 @@
-
+<%= form_with model: @order, url:orders_comfirm_path, method: :post do |f| %>
 <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
 <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
 
 <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
 <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
 
-<%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %
+<%= f.select :address_id, options_from_collection_for_select(Addresse.all, :id, :address_display) %>
+
+<%= f.radio_button :address_select, 0 %>
+<%= f.label :address_select, "ご自身の住所"%>
+<%= f.radio_button :address_select, 1 %>
+<%= f.label :address_select, "登録済み住所"%>
+<%= f.radio_button :address_select, 2 %>
+<%= f.label :address_select, "新規住所"%>
+
+<%= f.submit "送信"%>
+
+<% end %>

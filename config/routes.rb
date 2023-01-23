@@ -14,7 +14,8 @@ Rails.application.routes.draw do
  scope module: :public do
    resources :items, only:[:index, :show]
    resource :customers, only:[ :edit, :update]
-   resources :cart_items, only:[:index, :update, :destroy, :destroy_all, :create]
+   delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
+   resources :cart_items, only:[:index, :update, :destroy, :create]
    resources :orders, only:[:new, :create, :index, :show]
    resources :addresses, only:[:index, :edit, :create, :update, :destroy]
    get 'customers/unsubscribe' =>'customers#unsubscribe'
