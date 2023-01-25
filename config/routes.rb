@@ -16,12 +16,13 @@ Rails.application.routes.draw do
    resource :customers, only:[ :edit, :update]
    delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
    resources :cart_items, only:[:index, :update, :destroy, :create]
+   get 'orders/complete' => 'orders#complete'
    resources :orders, only:[:new, :create, :index, :show]
    resources :addresses, only:[:index, :edit, :create, :update, :destroy]
    get 'customers/unsubscribe' =>'customers#unsubscribe'
    patch 'customers/withdraw' => 'customers#withdraw'
    post 'orders/comfirm' => 'orders#comfirm'
-   get 'orders/complete' => 'orders#complete'
+   
    root to: 'homes#top'
    get 'home/about' => 'homes#about'
    get 'customers/my_page' =>'customers#show'

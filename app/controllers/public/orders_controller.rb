@@ -16,8 +16,10 @@ class Public::OrdersController < ApplicationController
     @order.address = @address.address
     @order.name = @address.name
     end
-    
-    
+  end
+  
+  def index
+   @order = Order.all
    
   end
   
@@ -28,6 +30,7 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.save
+    redirect_to orders_complete_path
   end
   
   
