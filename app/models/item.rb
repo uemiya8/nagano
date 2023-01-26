@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   
- has_many :cart_item, dependent: :destroy
+ has_many :cart_items, dependent: :destroy
+ has_many :order_details, dependent: :destroy
  has_one_attached :image
  belongs_to :genre
  enum is_active: { sale: true, stop: false }

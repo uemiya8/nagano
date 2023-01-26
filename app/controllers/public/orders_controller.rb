@@ -8,7 +8,7 @@ class Public::OrdersController < ApplicationController
     if params[:order][:select_address] == "0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
-      @order.name = current_customer.first_name + current_customer.last_name
+      @order.name = current_customer.last_name + current_customer.first_name
       
     elsif  params[:order][:select_address] == "1"
     @address = Address.find(params[:order][:address_id])
@@ -20,7 +20,7 @@ class Public::OrdersController < ApplicationController
   
   def index
    @order = Order.all
-   
+   @total_price = 0
   end
   
   def new
@@ -29,7 +29,21 @@ class Public::OrdersController < ApplicationController
   
   def create
     @order = Order.new(order_params)
-    @order.save
+    @order.customer_id = current_customer.id
+    @cart_items = current_customer.cart_items
+    @order.save!
+    #cart_itemを一つずつ取り出して注文詳細として保存する
+    @cart_items.each do |cart_item|
+      @order_detail = OrderDetail.new
+      @order_detail.order_id= @order.id
+      @order_detail.item_id = cart_item.item.id
+      @order_detail.price = cart_item.item.price
+      @order_detail.amount =cart_item.amount
+      @order_detail.making_status = 0
+      @order_detail.save!
+    end 
+    #cart_itemを空にする
+    current_customer.cart_items.destroy_all
     redirect_to orders_complete_path
   end
   
@@ -38,7 +52,7 @@ class Public::OrdersController < ApplicationController
   private
   
   def order_params
-    params.require(:order).permit(:payment_method,:postal_code, :address, :name )
+    params.require(:order).permit(:payment_method,:postal_code, :address, :name, :shipping_cost, :total_payment, :status)
   end
   
 end

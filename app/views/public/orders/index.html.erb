@@ -1,6 +1,5 @@
 注文履歴一覧
 <table>
- <% @order.each do |order| %>
  <thead>
   <th>日時</th>
   <th>住所</th>
@@ -8,13 +7,21 @@
   <th>合計金額</th>
   <th>ステータス</th>
  </thead>
+
+ 
  
  <tbody>
-  <td><%= @order.created_at %></td>
-  <td><%= @order.address %>
-  <td><%= @item_.name %></td>
-  <td><%= @total_fee + @order.shipping_cost %></td>
-  <td><%= @order.status %></td>
+   <% @order.each do |order| %>
+  <tr>
+   <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+  <td><%= order.address %></td>
+  <td><% order.order_details.each do |order_detail| %>
+  <% @total_price += (order_detail.item.price * 1.1).floor * order_detail.amount %>
+  <%= order_detail.item.name %>
+  <% end %></td>
+  <td><%= @total_price + order.shipping_cost %></td>
+  <td><%= order.status %></td>
+ </tr>
+ <% end %>
  </tbody>
 </table>
-<% end %>
