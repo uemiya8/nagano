@@ -8,13 +8,14 @@
     </tr>
     
     <tbody>
-      <% @items.each do |item| %>
+      <% @orders.each do |order| %>
        <tr>
-         <td></td>
-         <td></td>
-         <td></td>
+         <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
+         <td><%= order.name %></td>
+         <td><%= order.total_amount %></td>
        </tr>
+      <% end %>
     </tbody>
   </thead>
   </table>
-  <% end %>
+  

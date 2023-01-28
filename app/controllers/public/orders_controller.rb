@@ -23,6 +23,15 @@ class Public::OrdersController < ApplicationController
    @total_price = 0
   end
   
+  def show
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
+    @total_fee = 0
+    @order_details.each do |order_detail|
+     @total_fee += (order_detail.item.price * 1.1).floor * order_detail.amount
+    end
+  end
+  
   def new
     @order=Order.new
   end
