@@ -1,12 +1,16 @@
-注文履歴一覧
-<table>
+<div class="container">
+ <div class="row">
+  <div class="col-sm-12 px-5 px-sm-0 mx-auto">
+<h5>注文履歴一覧</h5>
+<table class="table">
  <thead>
   <tr>
    <th>日時</th>
-   <th>住所</th>
+   <th>配送先</th>
    <th>商品名</th>
    <th>合計金額</th>
    <th>ステータス</th>
+   <th>注文詳細</th>
   </tr>
  </thead>
 
@@ -23,6 +27,7 @@
   <% end %></td>
   <td><%= @total_price + order.shipping_cost %></td>
   <td><%= order.status %></td>
+  <td><%= link_to "表示する", order_path(order.id), class: "btn btn-sn btn-success" %></td>
  </tr>
  <% end %>
  </tbody>
