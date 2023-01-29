@@ -1,5 +1,8 @@
-
-<table> 
+<div class="container">
+ <div class="row">
+  <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto">
+    <h4>注文情報確認</h4>
+<table class="table"> 
   <thead>
       <th>商品名</th>
       <th>単価(税込)</th>
@@ -18,15 +21,17 @@
   <% end %>
   </tbody>
  </table> 
+ 
+<p>支払方法</p><%=@order.payment_method %>
+<%=@order.shipping_cost %> 
+<%=@total_fee %>
 
 <p>お届け先</p>
 <%=@order.postal_code%>
 <%=@order.address%>
 <%=@order.name%>
 
-<p>支払方法</p><%=@order.payment_method %>
-<%=@order.shipping_cost %> 
-<%=@total_fee %>
+
 
 <p>合計金額</p>
 <%=@total_fee + @order.shipping_cost %>
@@ -40,5 +45,5 @@
 <%= f.hidden_field :status, :value => "waiting_for_payment" %>
 <%= f.hidden_field :payment_method, :value => @order.payment_method %>
 
-<%=f.submit "注文を確定する" %>
+<%=f.submit "注文を確定する", class: "btn btn-sn btn-success" %>
 <% end %>

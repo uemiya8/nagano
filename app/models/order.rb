@@ -13,4 +13,5 @@ class Order < ApplicationRecord
     return total
   end
   
+  has_many:order_details, dependent: :destroy
 end

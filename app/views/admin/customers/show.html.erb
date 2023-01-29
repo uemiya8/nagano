@@ -1,41 +1,47 @@
-<h4>の会員詳細</h4>
-<%= @customer.id %>
+<div class="container">
+ <div class="row">
+  <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto">
+   <h4><%= @customer.full_name %>の会員詳細</h4>
+   
 
-<table>
-  <tr>
-    <th>会員ID</th>
-    <td><%= @customer.id %></td>
-  </tr>
-  <tr>
-    <th>氏名</th>
-    <td><%= @customer.name %></td>
-  </tr>
-  <tr>
-    <th>フリガナ</th>
-    <td><%= @customer.name.kana %></td>
-  </tr>
-  <tr>
-    <th>郵便番号</th>
-    <td><%= @customer.postal.code %></td>
-  </tr>
-  <tr>
-    <th>住所</th>
-    <td><%= @customer.address %></td>
-  </tr>
-  <tr>
-    <th>電話番号</th>
-    <td><%= @customer.telephone.number %></td>
-  </tr>
-  <tr>
-    <th>メールアドレス</th>
-    <td><%= @customer.email %></td>
-  </tr>
-  <tr>
-    <th>会員ステータス</th>
-    <td><% if @customer.is_deleted==false %>
-        有効
+   <table>
+    <tr>
+     <th>会員ID</th>
+     <td><%= @customer.id %></td>
+    </tr>
+    <tr>
+     <th>氏名</th>
+     <td><%= @customer.full_name %></td>
+    </tr>
+    <tr>
+     <th>フリガナ</th>
+     <td><%= @customer.full_name_kana %></td>
+    </tr>
+    <tr>
+     <th>郵便番号</th>
+     <td><%= @customer.postal_code %></td>
+    </tr>
+    <tr>
+     <th>住所</th>
+     <td><%= @customer.address %></td>
+    </tr>
+    <tr>
+     <th>電話番号</th>
+     <td><%= @customer.telephone_number %></td>
+    </tr>
+    <tr>
+     <th>メールアドレス</th>
+     <td><%= @customer.email %></td>
+    </tr>
+    <tr>
+     <th>会員ステータス</th>
+     <td><% if @customer.is_deleted==false %>
+         有効
         <% else %>
-        無効
+         無効
         <% end %></td>
-  </tr>
-</table>
+    </tr>
+   </table>
+   
+   <%= link_to "編集する", edit_admin_customer_path %>
+   <%= link_to "注文履歴一覧を見る", admin_root_path %>

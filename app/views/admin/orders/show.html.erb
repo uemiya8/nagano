@@ -1,0 +1,51 @@
+<div class="container">
+ <div class="row">
+  <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto">
+<h4>注文履歴詳細</h4>
+<P>購入者</P>
+<%= @order.name %>
+<p>注文日</p>
+<%= @order.created_at.strftime('%Y/%m/%d') %>
+<p>配送先</p>
+<%= @order.address %>
+<p>支払方法</p>
+<%=@order.payment_method %>
+<p>注文ステータス</p>
+<%= @order.status %>
+
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th>制作ステータス</th>
+      <th></th>
+    </tr>
+  </thead>
+  
+  <tbody>
+   <% @order.order_details.each do |order_detail| %>
+    <tr>
+      <td><%= order_detail.item.name %></td>
+      <td><%= (order_detail.price * 1.1).floor %></td>
+      <td><%= order_detail.amount %></td>
+      <td><%= (order_detail.price * order_detail.amount * 1.1).floor %></td>
+      <td><%= order_detail.making_status %></td>
+    </tr>
+   <% end %>
+  </tbody>
+</table>
+
+<p>商品合計</p>
+<%= @order.total_payment - @order.shipping_cost %>
+<p>送料</p>
+<%=@order.shipping_cost %>
+<p>請求金額合計</p>
+<%= @order.total_payment %>円
+
+  </div>
+ </div>
+</div> 
+

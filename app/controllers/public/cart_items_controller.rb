@@ -1,7 +1,7 @@
 class Public::CartItemsController < ApplicationController
   
   def index
-    @cart_item = CartItem.all
+    @cart_item = current_customer.cart_items
     @total_fee = 0
   end
   
@@ -26,6 +26,16 @@ class Public::CartItemsController < ApplicationController
     @cart_items = CartItem.all
     render :index
    end
+  end
+  
+  def update
+      @cart_item = CartItem.find(params[:id])
+     if  @cart_item.update(cart_item_params)
+       redirect_to cart_items_path
+     else
+      @cart_item = cart_item.all
+      render :edit
+    end
   end
   
   private
