@@ -1,4 +1,6 @@
-
+<div class="container">
+ <div class="row">
+  <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto">
 <h4>会員情報編集</h4>
 
 <%= form_with model: @customer,url:customers_path do |f| %>
@@ -31,9 +33,12 @@
    <td><%= f.text_field :email %></td>
    </tr>
           
-   <td><%= f.submit '編集内容を保存' %></td>
-   <td><%= link_to '退会する', customers_unsubscribe_path, class: "btn btn-sn btn-success" %></td>
+   <td><%= f.submit '編集内容を保存',  class: "btn btn-sn btn-success"  %></td>
+   <td><%= link_to '退会する', customers_unsubscribe_path, class: "btn btn-danger" %></td>
   </tr>
  </tbody>
 </table>
 <% end %>
+   </div>
+  </div>
+ </div> 

@@ -38,13 +38,16 @@
   </tbody>
 </table>
 
-<p>商品合計</p>
-<%= @order.total_payment - @order.shipping_cost %>
-<p>送料</p>
-<%=@order.shipping_cost %>
-<p>請求金額合計</p>
-<%= @order.total_payment %>円
-
+<table class = "table">
+ <tr>    
+<th>商品合計</th>
+<td><%= @order.total_payment - @order.shipping_cost %>円</td>
+<th>送料</th>
+<td><%=@order.shipping_cost %>円</td>
+<th>請求金額合計</th>
+<td><%= @order.total_payment %>円</td>
+</tr>
+</table>
   </div>
  </div>
 </div> 

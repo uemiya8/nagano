@@ -1,6 +1,6 @@
-<h4>会員一覧</h4>
-<%= form_with model: @customer, url: admin_customers_path do |f| %>
 <table class="table table-hover table-invrse">
+<h4>会員一覧</h4>
+ <%= form_with model: @customer, url: admin_customers_path do |f| %>
   <thead>
     <% @customer.each do |customer| %>
     <tr>

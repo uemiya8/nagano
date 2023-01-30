@@ -35,7 +35,7 @@ class Public::CartItemsController < ApplicationController
      else
       @cart_item = cart_item.all
       render :edit
-    end
+     end
   end
   
   private

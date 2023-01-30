@@ -1,9 +1,13 @@
+<div class="container">
+ <div class="row">
+  <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto">
 <h5>注文履歴詳細</h5>
 
-<table>
+
+<div>注文情報</div>
+<table class = "table">
  <thead>
    <tr>
-    <p>注文情報</p>
      <th>注文日</th>
      <th>配送先</th>
      <th>支払方法</th>
@@ -21,29 +25,27 @@
  </tbody>
  </table>
  
- <table>
-   <p>請求情報</p>
-    <thead>
-      <tr>
-        <th>商品合計</th>
-        <th>配送料</th>
-        <th>ご請求額</th>
-      </tr>
-    </thead>
-    <tbody>
-     <tr>
-      <td><%= @total_fee %></td>
-      <td><%= @order.shipping_cost %></td> 
-      <td><%= @total_fee + @order.shipping_cost %></td>
+
+ <div>請求情報</div>
+ <table class = "table">
+  <thead>
+   <tr>
+    <th>商品合計</th>
+    <th>配送料</th>
+    <th>ご請求額</th>
    </tr>
-    <tbody>
-      
-    </tbody>
+  </thead>
+  <tbody>
+   <tr>
+    <td><%= @total_fee %></td>
+    <td><%= @order.shipping_cost %></td> 
+    <td><%= @total_fee + @order.shipping_cost %></td>
+   </tr>
+  </tbody>
  </table>
  
- 
- <table>
-  <p>注文内容</p>
+ <div>注文内容</div>
+ <table class = "table">
   <thead>
    <tr>
      <th>商品</th>
@@ -64,3 +66,6 @@
    <% end %>
   </tbody>
 </table>
+   </div>
+  </div>
+ </div>
