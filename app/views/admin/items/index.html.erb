@@ -17,8 +17,9 @@
         <td><%= item.id %></td>
         <td><%= link_to item.name, admin_item_path(item.id) %></td>
         <td><%= item.price %></td>
-        <td><%= item.genre&.name %></td>
-        <td class="<%=  item.is_active == 'sale' ? 'active_item' : 'stop_item' %>"><%= item.is_active_i18n %></td>
+        <td><%= item.genre.name %></td>
+        <td><%= item.is_active_i18n %></td>
+        
       </tr>
       
     <% end %>   

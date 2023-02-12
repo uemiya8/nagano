@@ -1,18 +1,15 @@
 <h4>注文情報入力</h4>
 
-
-<p>支払方法</p>
-<%= form_with model: @order, url:orders_comfirm_path, method: :post do |f| %>
-<%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
-<%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
-
-
-<%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-<%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
+ <p>支払方法</p>
+  <%= form_with model: @order, url:orders_comfirm_path, method: :post do |f| %>
+  <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+  <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
+  
+  
+  <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+  <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
 
 <p>お届け先</p>
-
-
 
 <%= f.radio_button :select_address, 0 %>
 <%= f.label :select_address, "ご自身の住所"%>
@@ -29,6 +26,6 @@
 宛名
 <%= f.text_field :name %>
 
-<%= f.submit "送信"%>
+<%= f.submit "確認画面に進む", class: "btn btn-sn btn-success" %>
 
 <% end %>

@@ -25,7 +25,7 @@
  <table class = table>
 <tr>
 <th>支払方法</th>
-<td><%=@order.payment_method %></td>
+<td><%= Order.payment_methods_i18n[@order.payment_method] %></td>
 
 <th>お届け先</th>
 <td><%=@order.postal_code%></td>
@@ -37,7 +37,7 @@
 <table class = table>
  <tr>
   <th>送料</th>
-  <td><%=@order.shipping_cost %>円</td>
+  <td><%=@order.shipping_cost %></td>
   <th>商品合計</th>
   <td><%=@total_fee %>円</td>
   <th>合計金額</th>
